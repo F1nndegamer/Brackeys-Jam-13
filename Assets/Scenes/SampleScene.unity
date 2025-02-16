@@ -6808,6 +6808,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9370289791db77c4bbba1b2859412612, type: 3}
   - {fileID: 8300000, guid: 0a97ac477cd1a77459c28dd559e2ba9c, type: 3}
   sfxSource: {fileID: 558145610}
+  jumpClip: {fileID: 8300000, guid: c50a672ee33f4834392119583850ca47, type: 3}
   dashClip: {fileID: 8300000, guid: f723a09f49ae0134f92cd6845ec9c98d, type: 3}
   uiPressClip: {fileID: 8300000, guid: cf6b0fdb39919a344a73b2a75f6dc024, type: 3}
   uiHoverClip: {fileID: 8300000, guid: d1728748231ab9f40be56f6d8ef49c3b, type: 3}

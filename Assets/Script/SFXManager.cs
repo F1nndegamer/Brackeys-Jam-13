@@ -9,8 +9,11 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioClip[] footstepClips;
 
-    [Header("Dash Sound")]
+    [Header("Jump Sound")]
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip jumpClip;
+
+    [Header("Dash Sound")]
     [SerializeField] private AudioClip dashClip;
 
     [Header("UI Sounds (Unused)")]
@@ -30,7 +33,6 @@ public class SFXManager : MonoBehaviour
     public void PlayRandomFootstep()
     {
         if (footstepClips.Length == 0 || footstepSource == null) return;
-
         AudioClip clip = footstepClips[Random.Range(0, footstepClips.Length)];
         footstepSource.PlayOneShot(clip);
     }
@@ -55,6 +57,14 @@ public class SFXManager : MonoBehaviour
         {
             PlayRandomFootstep();
             yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
+        }
+    }
+
+    public void PlayJumpSound()
+    {
+        if (sfxSource != null && jumpClip != null)
+        {
+            sfxSource.PlayOneShot(jumpClip);
         }
     }
 
