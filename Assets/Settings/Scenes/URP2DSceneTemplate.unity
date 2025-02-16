@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 106116311}
   - component: {fileID: 106116312}
   m_Layer: 0
-  m_Name: Chekpoint
+  m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -808,11 +808,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c16cc02f30da44cac63b75d3fbb1c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  sprintSpeed: 8
+  moveSpeed: 5
+  sprintMultiplier: 1.5
   jumpForce: 12
+  maxJumps: 2
   dashSpeed: 15
   dashDuration: 0.2
+  groundCheck: {fileID: 0}
+  groundCheckRadius: 0.2
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
