@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
          1. The player is grounded.
          2. There is horizontal movement.
          3. The player is not dashing. */
-         
+         /*
         if (isGrounded && Mathf.Abs(moveInput) > 0.1f && !isDashing)
         {
             SFXManager.Instance.StartFootsteps();
@@ -104,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
         {
             SFXManager.Instance.StopFootsteps();
         }
+         */
     }
 
     void Jump()
