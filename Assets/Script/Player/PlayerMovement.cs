@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
         {
             Jump();
         }
@@ -111,6 +111,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpCount++;
+        if(jumpCount == 1)
+        {
+             SFXManager.Instance.PlayJumpSound();
+             Debug.Log("jump 1");
+        }
+        else if(jumpCount > 1)
+        {
+            SFXManager.Instance.PlayDubbleJumpSound();
+            Debug.Log("jump 2");
+        }
     }
 
     IEnumerator Dash()
@@ -121,13 +131,13 @@ public class PlayerMovement : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
-
+    
+        SFXManager.Instance.PlayDashSound();
         yield return new WaitForSeconds(dashDuration);
-
         rb.gravityScale = originalGravity;
         isDashing = false;
-
         yield return new WaitForSeconds(1f); // Dash cooldown
         canDash = true;
+        SFXManager.Instance.PlayDashRecoverSound();
     }
 }
