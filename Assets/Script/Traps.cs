@@ -9,7 +9,7 @@ public class Traps : MonoBehaviour
     {
         if (isActive && isWork)
         {
-            Debug.Log("Damage:" + damage);
+            Debug.Log("Damage:" + damage); //Base Trap work
         }
     }
 }
