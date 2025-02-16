@@ -6965,6 +6965,7 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: c50a672ee33f4834392119583850ca47, type: 3}
   dubblejumpClip: {fileID: 8300000, guid: cea815992b48f8e419afc2cd2aaab1f9, type: 3}
   dashClip: {fileID: 8300000, guid: f723a09f49ae0134f92cd6845ec9c98d, type: 3}
+  dashRecoverClip: {fileID: 8300000, guid: c4d0cd7e88e63a348908117d86f4cc3e, type: 3}
   uiPressClip: {fileID: 8300000, guid: cf6b0fdb39919a344a73b2a75f6dc024, type: 3}
   uiHoverClip: {fileID: 8300000, guid: d1728748231ab9f40be56f6d8ef49c3b, type: 3}
 --- !u!1 &2092502985

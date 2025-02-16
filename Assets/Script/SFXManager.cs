@@ -16,6 +16,7 @@ public class SFXManager : MonoBehaviour
 
     [Header("Dash Sound")]
     [SerializeField] private AudioClip dashClip;
+    [SerializeField] private AudioClip dashRecoverClip;
 
     [Header("UI Sounds (Unused)")]
     [SerializeField] private AudioClip uiPressClip;
@@ -81,6 +82,13 @@ public class SFXManager : MonoBehaviour
         if (sfxSource != null && dashClip != null)
         {
             sfxSource.PlayOneShot(dashClip);
+        }
+    }
+    public void PlayDashRecoverSound()
+    {
+        if (sfxSource != null && dashRecoverClip != null)
+        {
+            sfxSource.PlayOneShot(dashRecoverClip);
         }
     }
 

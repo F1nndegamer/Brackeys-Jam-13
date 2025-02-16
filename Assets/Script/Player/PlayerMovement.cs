@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
-
+        SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(1f); // Dash cooldown
         canDash = true;
     }
