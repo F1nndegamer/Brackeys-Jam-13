@@ -89,6 +89,21 @@ public class PlayerMovement : MonoBehaviour
             float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
             rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
         }
+
+        /* --- Footstep SFX Trigger ---
+         Only play footsteps when:
+         1. The player is grounded.
+         2. There is horizontal movement.
+         3. The player is not dashing. */
+         
+        if (isGrounded && Mathf.Abs(moveInput) > 0.1f && !isDashing)
+        {
+            SFXManager.Instance.StartFootsteps();
+        }
+        else
+        {
+            SFXManager.Instance.StopFootsteps();
+        }
     }
 
     void Jump()
