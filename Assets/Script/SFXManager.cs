@@ -3,18 +3,24 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour
 {
-    public static SFXManager Instance;  // Singleton instance
+    public static SFXManager Instance;
 
-    [SerializeField] private AudioSource footstepSource; // Assign in Inspector
-    [SerializeField] private AudioClip[] footstepClips;  // Array of footstep sounds
-    [SerializeField] private float minStepInterval = 0.3f; // Minimum delay between steps
-    [SerializeField] private float maxStepInterval = 0.5f; // Max delay for variation
+    [Header("Footstep Sounds")]
+    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioClip[] footstepClips;
+
+    [Header("Dash Sound")]
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip dashClip;
+
+    [Header("UI Sounds (Unused)")]
+    [SerializeField] private AudioClip uiPressClip;
+    [SerializeField] private AudioClip uiHoverClip;
 
     private bool isPlayingFootsteps = false;
 
     private void Awake()
     {
-        // Singleton pattern
         if (Instance == null)
             Instance = this;
         else
@@ -48,7 +54,31 @@ public class SFXManager : MonoBehaviour
         while (isPlayingFootsteps)
         {
             PlayRandomFootstep();
-            yield return new WaitForSeconds(Random.Range(minStepInterval, maxStepInterval));
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
+        }
+    }
+
+    public void PlayDashSound()
+    {
+        if (sfxSource != null && dashClip != null)
+        {
+            sfxSource.PlayOneShot(dashClip);
+        }
+    }
+
+    public void PlayUIPressSound()
+    {
+        if (sfxSource != null && uiPressClip != null)
+        {
+            sfxSource.PlayOneShot(uiPressClip);
+        }
+    }
+
+    public void PlayUIHoverSound()
+    {
+        if (sfxSource != null && uiHoverClip != null)
+        {
+            sfxSource.PlayOneShot(uiHoverClip);
         }
     }
 }

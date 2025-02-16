@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
 
         yield return new WaitForSeconds(dashDuration);
-
+        SFXManager.Instance.PlayDashSound();
         rb.gravityScale = originalGravity;
         isDashing = false;
 
