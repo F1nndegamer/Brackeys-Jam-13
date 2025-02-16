@@ -3,11 +3,10 @@ using UnityEngine;
 public class Traps : MonoBehaviour
 {
     public float damage;
-    public bool isActive;
-    public bool isWork;
+    public bool isActive = true; //when press Deactive button, is false
     public virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isActive && isWork)
+        if (isActive && GameManager.instance.isTakenTreasure)
         {
             Debug.Log("Damage:" + damage); //Base Trap work
             collision.gameObject.GetComponent<PlayerRespawn>().Respawn();

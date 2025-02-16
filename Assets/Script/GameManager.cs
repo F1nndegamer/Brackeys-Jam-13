@@ -3,6 +3,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public Traps traps;
+    public bool isTakenTreasure = false; //shows that the treasure has been taken
+
     private Vector3 lastCheckpoint;
 
     private void Awake()
