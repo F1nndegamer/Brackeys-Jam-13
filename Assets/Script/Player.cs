@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         // Flip player sprite
         if (moveInput != 0)
         {
-            transform.localScale = new Vector3(facingDirection, 1, 1);
+            transform.localScale = new Vector3(facingDirection, transform.localScale.y, transform.localScale).z;
         }
     }
 
