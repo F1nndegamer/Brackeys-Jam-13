@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
         {
             Jump();
         }
