@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Brackeys jam 13.sln"
+    "dotnet.defaultSolution": "Brackeys 13.sln"
 }
