@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -28,10 +29,12 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -67,12 +70,20 @@ public class PlayerMovement : MonoBehaviour
         // Flip player sprite
         if (moveInput != 0)
         {
-            transform.localScale = new Vector3(facingDirection, transform.localScale.y, transform.localScale.z);
+            if(transform.localScale.x < 0 && facingDirection == 1)
+            {
+            transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
+            if(transform.localScale.x > 0 && facingDirection == -1)
+            {
+            transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            }
         }
     }
 
     void FixedUpdate()
     {
+        animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x)); 
         // Ground detection
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
