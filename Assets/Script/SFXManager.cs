@@ -12,6 +12,7 @@ public class SFXManager : MonoBehaviour
     [Header("Jump Sound")]
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip dubblejumpClip;
 
     [Header("Dash Sound")]
     [SerializeField] private AudioClip dashClip;
@@ -65,6 +66,13 @@ public class SFXManager : MonoBehaviour
         if (sfxSource != null && jumpClip != null)
         {
             sfxSource.PlayOneShot(jumpClip);
+        }
+    }
+    public void PlayDubbleJumpSound()
+    {
+        if (sfxSource != null && dubblejumpClip != null)
+        {
+            sfxSource.PlayOneShot(dubblejumpClip);
         }
     }
 

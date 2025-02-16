@@ -110,7 +110,16 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpCount++;
-        SFXManager.Instance.PlayJumpSound();
+        if(jumpCount == 1)
+        {
+             SFXManager.Instance.PlayJumpSound();
+             Debug.Log("jump 1");
+        }
+        else if(jumpCount > 1)
+        {
+            SFXManager.Instance.PlayDubbleJumpSound();
+            Debug.Log("jump 2");
+        }
     }
 
     IEnumerator Dash()
