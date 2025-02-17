@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && !wasGrounded)
         {
             jumpCount = 0;
+            animator.SetBool("isJumping", false);
         }
 
         // Move player (disable movement while dashing)
@@ -122,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpCount++;
+        animator.SetBool("isJumping", true);
         if(jumpCount == 1)
         {
              SFXManager.Instance.PlayJumpSound();
