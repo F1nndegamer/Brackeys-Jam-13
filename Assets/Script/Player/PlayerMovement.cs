@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Jump Settings")]
     public float jumpForce = 12f;
-    public int maxJumps = 2;
     private int jumpCount = 0;
     private bool isGrounded;
 
@@ -50,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         // Jumping
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.W) && jumpCount < maxJumps || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < maxJumps)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2 || Input.GetKeyDown(KeyCode.W) && jumpCount < 2 || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
             Jump();
         }
@@ -97,6 +96,10 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount = 0;
             animator.SetBool("isJumping", false);
+        }
+        if(!isGrounded && jumpCount == 0)
+        {
+            jumpCount = 1;
         }
 
         // Move player (disable movement while dashing)
