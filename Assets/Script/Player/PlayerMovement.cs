@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
-    public float sprintMultiplier = 1.5f;
     private float moveInput;
-    private bool isSprinting;
 
     [Header("Jump Settings")]
     public float jumpForce = 12f;
@@ -21,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool canDash = true;
     private int facingDirection = 1; // 1 = right, -1 = left
+    public float dashCooldown = 1.1f;
+    private float lastDashTime = -Mathf.Infinity;
     private TrailRenderer tr;
 
     [Header("Ground Detection")]
@@ -46,9 +46,6 @@ public class PlayerMovement : MonoBehaviour
         }
         // Get horizontal input
         moveInput = Input.GetAxisRaw("Horizontal");
-
-        // Sprinting
-        isSprinting = Input.GetKey(KeyCode.LeftShift);
 
         // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2 || Input.GetKeyDown(KeyCode.W) && jumpCount < 2 || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
@@ -105,8 +102,7 @@ public class PlayerMovement : MonoBehaviour
         // Move player (disable movement while dashing)
         if (!isDashing)
         {
-            float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
-            rb.linearVelocity = new Vector2(moveInput * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         }
 
         /* --- Footstep SFX Trigger ---
@@ -147,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-
+         lastDashTime = Time.time;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
@@ -168,5 +164,9 @@ public class PlayerMovement : MonoBehaviour
         {
         tr.emitting = false;
         }
+    }
+    public float GetDashCooldownRemaining()
+    {
+        return Mathf.Max(0, (lastDashTime + dashCooldown) - Time.time);
     }
 }

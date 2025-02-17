@@ -54,13 +54,19 @@ public class SFXManager : MonoBehaviour
     }
 
     private IEnumerator FootstepLoop()
+{
+    while (isPlayingFootsteps)
     {
-        while (isPlayingFootsteps)
+        PlayRandomFootstep();
+        while (footstepSource.isPlaying)
         {
-            PlayRandomFootstep();
-            yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
+            yield return null;
         }
+
+        yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
     }
+}
+
 
     public void PlayJumpSound()
     {
