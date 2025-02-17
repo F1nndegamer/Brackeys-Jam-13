@@ -1,11 +1,11 @@
 using UnityEngine;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Traps traps;
     public bool isTakenTreasure = false; //shows that the treasure has been taken
-
+    public TextMeshProUGUI DoorLockText;
     private Vector3 lastCheckpoint;
 
     private void Awake()
