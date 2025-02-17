@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isDashing;
     private bool canDash = true;
     private int facingDirection = 1; // 1 = right, -1 = left
+    private TrailRenderer tr;
 
     [Header("Ground Detection")]
     public Transform groundCheck;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        tr = GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -153,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
     
         SFXManager.Instance.PlayDashSound();
+        tr.emitting = true;
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
@@ -160,5 +163,6 @@ public class PlayerMovement : MonoBehaviour
         SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(0.6f); // Dash cooldown
         canDash = true;
+        tr.emitting = false;
     }
 }
