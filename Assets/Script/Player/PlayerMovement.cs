@@ -155,7 +155,10 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
     
         SFXManager.Instance.PlayDashSound();
+        if(tr != null)
+        {
         tr.emitting = true;
+        }
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
@@ -163,6 +166,9 @@ public class PlayerMovement : MonoBehaviour
         SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(0.6f); // Dash cooldown
         canDash = true;
+        if(tr != null)
+        {
         tr.emitting = false;
+        }
     }
 }
