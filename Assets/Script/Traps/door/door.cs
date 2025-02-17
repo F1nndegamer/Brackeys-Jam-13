@@ -3,10 +3,18 @@ using System.Collections;
 
 public class door : MonoBehaviour, KeyFunction 
 {
-    public int doornum;
+    //to make it invisible at start
+    private BoxCollider2D[] colliders;
+    private SpriteRenderer spriteRenderer;    public int doornum;
+    private void Start()
+    {
+        colliders = GetComponents<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        ToggleComponentsState();
+    }
     public void CalledFromTressure()
     {
-        gameObject.SetActive(true);
+        ToggleComponentsState();
     }
     public void KeyOpened()
     {
@@ -28,5 +36,26 @@ public class door : MonoBehaviour, KeyFunction
     {
         yield return new WaitForSeconds(1f);
         GameManager.instance.DoorLockText.gameObject.SetActive(false);
+    }
+    public void ToggleComponentsState()
+    {
+        if (colliders.Length >= 2)
+        {
+            bool newState = !colliders[0].enabled;
+            
+            foreach (BoxCollider2D collider in colliders)
+            {
+                collider.enabled = newState;
+            }
+            
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.enabled = newState;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Not enough BoxCollider2D components found on this GameObject!");
+        }
     }
 }
