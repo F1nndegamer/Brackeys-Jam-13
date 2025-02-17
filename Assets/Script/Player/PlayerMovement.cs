@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(transform.position.y < -40)
+        {
+            TempRespawn.instance.respawm();
+        }
         // Get horizontal input
         moveInput = Input.GetAxisRaw("Horizontal");
 
