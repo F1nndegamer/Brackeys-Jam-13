@@ -8,7 +8,7 @@ public class Treasure : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             GameManager.instance.isTakenTreasure = true;
-
+            PlayerScript.instance.inventory.AddInventory(gameObject);
             var callables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<KeyFunction>();
 
             foreach (KeyFunction callable in callables)

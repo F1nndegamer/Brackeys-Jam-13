@@ -10,13 +10,14 @@ public class key : MonoBehaviour
         {
             if(PlayerScript.instance.HasKey == false)
             {
-            ispickedup = true;
-            PlayerScript.instance.HasKey = true;
+                ispickedup = true;
+                PlayerScript.instance.HasKey = true;
+                PlayerScript.instance.inventory.AddInventory(gameObject);
             }
-            else if(ispickedup = false)
+            else if(ispickedup == false)
             {
-            GameManager.instance.DoorLockText.text = "You already have a key";
-            GameManager.instance.DoorLockText.gameObject.SetActive(true);
+                GameManager.instance.DoorLockText.text = "You already have a key";
+                GameManager.instance.DoorLockText.gameObject.SetActive(true);
                 StartCoroutine(TextDeact());
             }
         }
@@ -26,7 +27,8 @@ public class key : MonoBehaviour
             if(doorscript.doornum == keynum)
             {
                 doorscript.KeyOpened();
-               Destroy(this.gameObject);
+                PlayerScript.instance.inventory.RemoveInventory(gameObject);
+                Destroy(this.gameObject);
             }
             else
             {
