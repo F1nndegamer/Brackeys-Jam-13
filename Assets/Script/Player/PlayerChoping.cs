@@ -15,7 +15,7 @@ public class PlayerChoping : MonoBehaviour
             //play attack animation (we don't have now or I couldn't see)
             Collider2D attack = Physics2D.OverlapCircle(attackPoint.position, attackRange, tree);
 
-            attack.GetComponent<TreeClass>().isChoped = true;
+            attack.GetComponent<TreeClass>().health -= 1;
         }
     }
     /*
