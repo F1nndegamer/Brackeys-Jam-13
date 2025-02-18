@@ -279,7 +279,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traps: {fileID: 0}
   isTakenTreasure: 0
-  DoorLockText: {fileID: 0}
+  DoorLockText: {fileID: 1913884300}
 --- !u!4 &153059880
 Transform:
   m_ObjectHideFlags: 0

@@ -107,26 +107,30 @@ public class Inventory : MonoBehaviour {
     }
 
     public void SelectSlot(int index) {
-        if (index < 0 || index >= slots.Length) return;
+    if (index < 0 || index >= slots.Length) return;
+    InventorySlot slot = slots[index];
 
-        InventorySlot slot = slots[index];
-
-        if (slot.isLocked) {
-            Debug.Log("This slot is locked.");
-            return;
-        }
-        if (slot.item == null) {
-            Debug.Log("No item in this slot.");
-            return;
-        }
-
-        if (activeSlotIndex != -1 && activeSlotIndex != index) {
-            DeactivateCurrentItem();
-        }
-
-        activeSlotIndex = index;
-        ActivateItem(slot.item);
+    if (slot.isLocked) {
+        Debug.Log("This slot is locked.");
+        return;
     }
+    if (slot.item == null) {
+        Debug.Log("No item in this slot.");
+        return;
+    }
+    if (activeSlotIndex == index) {
+        Debug.Log("Deselecting slot: " + index);
+        DeactivateCurrentItem();
+        return;
+    }
+    if (activeSlotIndex != -1) {
+        DeactivateCurrentItem();
+    }
+    Debug.Log("Selecting slot: " + index);
+    activeSlotIndex = index;
+    ActivateItem(slot.item);
+}
+
     private void ActivateItem(GameObject item) {
         if (playerFollowPoint == null) {
             Debug.LogWarning("Player follow point is not set.");
