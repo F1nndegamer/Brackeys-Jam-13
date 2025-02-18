@@ -77,6 +77,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &-1272147371887749231
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RunNewsprite
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 5db8f48e142b9964d8876981818f9f1b, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -128,12 +154,12 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 5876f47268265c845a78611ad3fad0b3, type: 2}
+    m_Motion: {fileID: 7400000, guid: 5db8f48e142b9964d8876981818f9f1b, type: 2}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
-    m_DirectBlendParameter: Blend
+    m_DirectBlendParameter: xVelocity
     m_Mirror: 0
   m_BlendParameter: xVelocity
   m_BlendParameterY: Blend
@@ -215,6 +241,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: -6322409607578293621}
     m_Position: {x: 238.46985, y: 327.2469, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: -1272147371887749231}
+    m_Position: {x: 273.46985, y: 392.2469, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 7211070705413098932}
