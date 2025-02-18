@@ -10,17 +10,14 @@ public class Key : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isPickedUp)
         {
+            if (PlayerScript.instance.inventory.AddItem(gameObject, true))
+            {
                 isPickedUp = true;
-                PlayerScript.instance.HasKey = true;
-
-                if (PlayerScript.instance.inventory.AddItem(gameObject, true))
-                {
-                    gameObject.SetActive(false); 
-                }
-            
+                gameObject.SetActive(false);
+            }
         }
 
-        if (other.CompareTag("Door") && isPickedUp)
+        if (other.CompareTag("Door") && IsInInventory())
         {
             Door doorScript = other.GetComponent<Door>();
 
@@ -35,6 +32,16 @@ public class Key : MonoBehaviour
                 ShowTemporaryMessage("Wrong Key");
             }
         }
+    }
+
+    public void ResetKeyState()
+    {
+        isPickedUp = false;
+    }
+
+    public bool IsInInventory()
+    {
+        return PlayerScript.instance.inventory.FindItemByID(keyID) != null;
     }
 
     private void ShowTemporaryMessage(string message)

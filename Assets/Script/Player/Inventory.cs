@@ -158,4 +158,22 @@ public class Inventory : MonoBehaviour {
         }
         return null;
     }
+    
+   public void DropItem() {
+    if (activeSlotIndex < 0 || activeSlotIndex >= slots.Length) {
+        Debug.Log("No item is currently selected to drop.");
+        return;
+    }
+
+    InventorySlot slot = slots[activeSlotIndex];
+    if (slot.item != null) {
+        slot.item.transform.position = playerFollowPoint.position; // Drop item at player's position
+        slot.item.SetActive(true); // Make it visible in the world
+        TpObjects.Remove(slot.item); // Remove from following objects
+        slot.item = null; // Remove from inventory
+        slot.icon.sprite = emptySprite; // Reset UI
+        activeSlotIndex = -1; // Deselect item
+    }
+}
+
 }
