@@ -167,6 +167,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public float GetDashCooldownRemaining()
     {
-        return Mathf.Max(0, (lastDashTime + dashCooldown) - Time.time);
+        float fullDashCooldown = dashDuration + 0.5f + 0.6f; // total dash recovery time
+        return canDash ? 0f : Mathf.Max(0, (lastDashTime + fullDashCooldown) - Time.time);
     }
 }

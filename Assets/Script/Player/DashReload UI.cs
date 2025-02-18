@@ -5,6 +5,7 @@ public class DashCooldownUI : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     public Image cooldownImage;
+
     private bool isFading = false;
     private bool canTurnGreen = true;
     private float fadeDuration = 1.0f;
@@ -13,11 +14,15 @@ public class DashCooldownUI : MonoBehaviour
     private Color startColor = Color.green;
     private Color endColor = Color.white;
 
-    private void Update()
+    void Update()
     {
-        if (playerMovement == null || cooldownImage == null) return;
+        if (playerMovement == null || cooldownImage == null)
+            return;
 
-        float cooldownPercent = Mathf.Clamp01(playerMovement.GetDashCooldownRemaining() / playerMovement.dashCooldown);
+        float fullDashCooldown = playerMovement.dashDuration + 0.5f + 0.6f;
+        float remainingCooldown = playerMovement.GetDashCooldownRemaining();
+
+        float cooldownPercent = Mathf.Clamp01(remainingCooldown / fullDashCooldown);
         cooldownImage.fillAmount = 1 - cooldownPercent;
 
         if (cooldownImage.fillAmount >= 1f && !isFading && canTurnGreen)
