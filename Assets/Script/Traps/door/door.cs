@@ -25,26 +25,6 @@ public class Door : MonoBehaviour, KeyFunction
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // Check if the player has a key matching this door
-            GameObject keyItem = PlayerScript.instance.inventory.FindItemByID(doorID);
-
-            if (keyItem != null)
-            {
-                UnlockDoor();
-                PlayerScript.instance.inventory.RemoveItem(keyItem);
-                Destroy(keyItem);
-            }
-            else
-            {
-                ShowTemporaryMessage("This door is locked");
-            }
-        }
-    }
-
     private void ShowTemporaryMessage(string message)
     {
         GameManager.instance.DoorLockText.text = message;
