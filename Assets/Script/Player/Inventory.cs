@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 [System.Serializable]
 public class InventorySlot {
     [Header("UI Reference")]
@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour {
     [Header("Inventory Setup (Exactly 2 Slots)")]
     [Tooltip("Assign 2 inventory slots with their UI Image (and ensure each Image has a Button component).")]
     public InventorySlot[] slots = new InventorySlot[2];
+    private List<GameObject> TpObjects = new List<GameObject>();
 
     [Header("UI Settings")]
     [Tooltip("Sprite to show when a slot is empty.")]
@@ -28,7 +29,13 @@ public class Inventory : MonoBehaviour {
     [Tooltip("The transform to which the active inventory item will be parented so that it follows the player (for example, a hand or attachment point).")]
     public Transform playerFollowPoint;
     private int activeSlotIndex = -1;
-
+    void Update()
+    {
+        foreach(GameObject toplayer in TpObjects)
+        {
+            toplayer.transform.position = playerFollowPoint.position;
+        }
+    }
     void Start() {
         for (int i = 0; i < slots.Length; i++) {
             if (slots[i].icon != null) {
@@ -45,7 +52,11 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-    public bool AddItem(GameObject newItem) {
+    public bool AddItem(GameObject newItem, bool doesTpToPlayer = false) {
+        if(doesTpToPlayer)
+        {
+            TpObjects.Add(newItem);
+        }
         if (newItem == null) {
             Debug.LogWarning("Attempted to add a null item.");
             return false;
@@ -69,6 +80,7 @@ public class Inventory : MonoBehaviour {
                 return true;
             }
         }
+        
 
         Debug.Log("Inventory is full; cannot add item.");
         return false;
@@ -121,8 +133,6 @@ public class Inventory : MonoBehaviour {
             return;
         }
         item.SetActive(true);
-        item.transform.SetParent(playerFollowPoint);
-        item.transform.localPosition = Vector3.zero;
     }
     private void DeactivateCurrentItem() {
         if (activeSlotIndex < 0 || activeSlotIndex >= slots.Length) return;
@@ -130,7 +140,6 @@ public class Inventory : MonoBehaviour {
         InventorySlot slot = slots[activeSlotIndex];
         if (slot.item != null) {
             slot.item.SetActive(false);
-            slot.item.transform.SetParent(null);
         }
         activeSlotIndex = -1;
     }

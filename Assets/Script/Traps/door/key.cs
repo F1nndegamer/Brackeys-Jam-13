@@ -8,7 +8,7 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isPickedUp)
         {
                 isPickedUp = true;
                 PlayerScript.instance.HasKey = true;
@@ -20,7 +20,7 @@ public class Key : MonoBehaviour
             
         }
 
-        if (other.CompareTag("Door"))
+        if (other.CompareTag("Door") && isPickedUp)
         {
             Door doorScript = other.GetComponent<Door>();
 
