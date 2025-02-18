@@ -13,7 +13,7 @@ public class Key : MonoBehaviour
                 isPickedUp = true;
                 PlayerScript.instance.HasKey = true;
 
-                if (PlayerScript.instance.inventory.AddItem(gameObject))
+                if (PlayerScript.instance.inventory.AddItem(gameObject, true))
                 {
                     gameObject.SetActive(false); 
                 }

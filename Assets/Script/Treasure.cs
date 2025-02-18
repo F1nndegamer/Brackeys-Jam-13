@@ -7,7 +7,7 @@ public class Treasure : MonoBehaviour
     {
         if (!collision.CompareTag("Player")) return;
 
-        if (PlayerScript.instance.inventory.AddItem(gameObject))
+        if (PlayerScript.instance.inventory.AddItem(gameObject, true))
         {
             GameManager.instance.isTakenTreasure = true;
             gameObject.SetActive(false);
