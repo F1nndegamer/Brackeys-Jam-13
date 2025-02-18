@@ -6,12 +6,13 @@ public class PlayerChoping : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private Animator animator;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public int axeID;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) & PlayerScript.instance.inventory.FindItemByID(axeID) != null)
         {
-            //play attack animation (we don't have now or I can not see)
+            //play attack animation (we don't have now or I couldn't see)
             Collider2D attack = Physics2D.OverlapCircle(attackPoint.position, attackRange, tree);
 
             attack.GetComponent<TreeClass>().isChoped = true;
