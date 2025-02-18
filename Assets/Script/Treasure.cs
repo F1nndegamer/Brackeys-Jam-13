@@ -5,24 +5,21 @@ public class Treasure : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player")) return;
+
+        if (PlayerScript.instance.inventory.AddItem(gameObject))
         {
             GameManager.instance.isTakenTreasure = true;
-            PlayerScript.instance.inventory.AddInventory(gameObject);
-            var callables = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<KeyFunction>();
+            gameObject.SetActive(false);
 
-            foreach (KeyFunction callable in callables)
+            foreach (var callable in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<KeyFunction>())
             {
                 callable.CalledFromTressure();
             }
         }
-    }
-
-    private void Update()
-    {
-        if (GameManager.instance.isTakenTreasure)
+        else
         {
-            gameObject.transform.position = PlayerScript.instance.itemPos.position;
+            Debug.Log("Inventory Full");
         }
     }
 }

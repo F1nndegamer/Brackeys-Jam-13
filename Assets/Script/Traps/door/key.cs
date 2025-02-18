@@ -1,52 +1,50 @@
 using UnityEngine;
 using System.Collections;
-public class key : MonoBehaviour
+
+public class Key : MonoBehaviour
 {
-    public int keynum;
-    bool ispickedup;
+    public int keyID;
+    private bool isPickedUp = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if(PlayerScript.instance.HasKey == false)
-            {
-                ispickedup = true;
+                isPickedUp = true;
                 PlayerScript.instance.HasKey = true;
-                PlayerScript.instance.inventory.AddInventory(gameObject);
-            }
-            else if(ispickedup == false)
-            {
-                GameManager.instance.DoorLockText.text = "You already have a key";
-                GameManager.instance.DoorLockText.gameObject.SetActive(true);
-                StartCoroutine(TextDeact());
-            }
+
+                if (PlayerScript.instance.inventory.AddItem(gameObject))
+                {
+                    gameObject.SetActive(false); 
+                }
+            
         }
-        if(other.gameObject.CompareTag("Door"))
+
+        if (other.CompareTag("Door"))
         {
-            door doorscript = other.gameObject.GetComponent<door>();
-            if(doorscript.doornum == keynum)
+            Door doorScript = other.GetComponent<Door>();
+
+            if (doorScript != null && doorScript.doorID == keyID)
             {
-                doorscript.KeyOpened();
-                PlayerScript.instance.inventory.RemoveInventory(gameObject);
-                Destroy(this.gameObject);
+                doorScript.UnlockDoor();
+                PlayerScript.instance.inventory.RemoveItem(gameObject);
+                Destroy(gameObject);
             }
             else
             {
-                GameManager.instance.DoorLockText.text = "Wrong Key";
-                GameManager.instance.DoorLockText.gameObject.SetActive(true);
-                StartCoroutine(TextDeact());
+                ShowTemporaryMessage("Wrong Key");
             }
         }
+    }
 
-    }
-    void Update()
+    private void ShowTemporaryMessage(string message)
     {
-        if(ispickedup)
-        {
-            gameObject.transform.position = PlayerScript.instance.itemPos.transform.position;
-        }
+        GameManager.instance.DoorLockText.text = message;
+        GameManager.instance.DoorLockText.gameObject.SetActive(true);
+        StartCoroutine(HideMessage());
     }
-    IEnumerator TextDeact()
+
+    private IEnumerator HideMessage()
     {
         yield return new WaitForSeconds(1f);
         GameManager.instance.DoorLockText.gameObject.SetActive(false);

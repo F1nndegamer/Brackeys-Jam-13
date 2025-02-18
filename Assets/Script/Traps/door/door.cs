@@ -1,53 +1,74 @@
 using UnityEngine;
 using System.Collections;
 
-public class door : MonoBehaviour, KeyFunction 
+public class Door : MonoBehaviour, KeyFunction
 {
-    //to make it invisible at start
     private BoxCollider2D[] colliders;
-    private SpriteRenderer spriteRenderer;    public int doornum;
+    private SpriteRenderer spriteRenderer;
+
+    public int doorID; // Changed 'doornum' to 'doorID' for clarity
+
     private void Start()
     {
         colliders = GetComponents<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         ToggleComponentsState();
     }
+
     public void CalledFromTressure()
     {
         ToggleComponentsState();
     }
-    public void KeyOpened()
+
+    public void UnlockDoor()
     {
         Destroy(gameObject);
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if(PlayerScript.instance.HasKey == false)
+            // Check if the player has a key matching this door
+            GameObject keyItem = PlayerScript.instance.inventory.FindItemByID(doorID);
+
+            if (keyItem != null)
             {
-            GameManager.instance.DoorLockText.text = "This door is locked";
-            GameManager.instance.DoorLockText.gameObject.SetActive(true);
-            StartCoroutine(DoorTextDeact());
+                UnlockDoor();
+                PlayerScript.instance.inventory.RemoveItem(keyItem);
+                Destroy(keyItem);
+            }
+            else
+            {
+                ShowTemporaryMessage("This door is locked");
             }
         }
     }
-    IEnumerator DoorTextDeact()
+
+    private void ShowTemporaryMessage(string message)
+    {
+        GameManager.instance.DoorLockText.text = message;
+        GameManager.instance.DoorLockText.gameObject.SetActive(true);
+        StartCoroutine(HideMessage());
+    }
+
+    private IEnumerator HideMessage()
     {
         yield return new WaitForSeconds(1f);
         GameManager.instance.DoorLockText.gameObject.SetActive(false);
     }
+
     public void ToggleComponentsState()
     {
         if (colliders.Length >= 2)
         {
             bool newState = !colliders[0].enabled;
-            
+
             foreach (BoxCollider2D collider in colliders)
             {
                 collider.enabled = newState;
             }
-            
+
             if (spriteRenderer != null)
             {
                 spriteRenderer.enabled = newState;
