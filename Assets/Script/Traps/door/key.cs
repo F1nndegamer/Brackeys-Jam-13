@@ -13,7 +13,7 @@ public class key : MonoBehaviour
             ispickedup = true;
             PlayerScript.instance.HasKey = true;
             }
-            else
+            else if(ispickedup = false)
             {
             GameManager.instance.DoorLockText.text = "You already have a key";
             GameManager.instance.DoorLockText.gameObject.SetActive(true);
