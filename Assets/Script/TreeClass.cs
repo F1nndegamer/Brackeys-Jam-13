@@ -1,36 +1,33 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class TreeClass : MonoBehaviour
 {
-    public int health = 3;
-    [SerializeField] private Animator animator;
-    [SerializeField] private List<Traps> traps;
-    [SerializeField] private List<PlatformClass> platform;
-    void Start()
-    {
-        gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-    }
+    public int health = 3; // Default health value, can be adjusted per tree
+    private Rigidbody2D rb;
+    private bool isFalling = false;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (traps.Count != 0 & health <= 0)
+        rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
         {
-            //play tree fall animation
-            traps.ForEach(x => x.isActive = false);
-        }
-        else if (platform.Count != 0 & health <= 0)
-        {
-            //play tree fall animation
-            platform.ForEach(x => x.isMade = true);
-        }
-        else
-        {
-            //do nothing, idk
+            rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.isKinematic = true; // Keep it static until it falls
         }
     }
 
-    
+    private void Update()
+    {
+        if (health <= 0 && !isFalling)
+        {
+            ChopDown();
+        }
+    }
+
+    private void ChopDown()
+    {
+        isFalling = true;
+        rb.isKinematic = false; // Enable physics
+        rb.AddTorque(10f, ForceMode2D.Impulse); // Apply a random torque for a falling effecta
+    }
 }
