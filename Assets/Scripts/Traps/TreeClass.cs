@@ -26,6 +26,7 @@ public class TreeClass : MonoBehaviour
 
     private void ChopDown()
     {
+        SFXManager.Instance.PlayTreeFallSound();
         isFalling = true;
         rb.isKinematic = false; // Enable physics
         rb.AddTorque(10f, ForceMode2D.Impulse); // Apply a random torque for a falling effecta

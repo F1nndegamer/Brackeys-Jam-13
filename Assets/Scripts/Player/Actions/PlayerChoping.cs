@@ -42,15 +42,19 @@ public class PlayerChoping : MonoBehaviour
         {
             animator.SetTrigger("Chop"); // Play chop animation if set
         }
-
+        
         Collider2D attack = Physics2D.OverlapCircle(attackPoint.position, attackRange, tree);
         if (attack != null)
         {
+            SFXManager.Instance.PlayWoodHitSound();
             TreeClass tree = attack.GetComponent<TreeClass>();
             if (tree != null)
             {
                 tree.health -= 1;
             }
+        }
+        else{
+            SFXManager.Instance.PlayAirHitSound();
         }
     }
     
