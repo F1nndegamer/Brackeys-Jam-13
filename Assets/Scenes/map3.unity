@@ -130198,6 +130198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 10
+  yaxisSpeedLimit: -15
   dashSpeed: 15
   dashDuration: 0.2
   dashCooldown: 1.1
@@ -131102,7 +131103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyID: 0
-  uniqueCode: 0
+  uniqueCode: 1952
 --- !u!114 &9056155942936324045
 MonoBehaviour:
   m_ObjectHideFlags: 0
