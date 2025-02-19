@@ -5,7 +5,13 @@ public class Key : MonoBehaviour
 {
     public int keyID;
     private bool isPickedUp = false;
+    void Update()
+    {
+        if(PlayerScript.instance.inventory.FindItemByID(keyID))
+        {
 
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && !isPickedUp)
@@ -53,7 +59,7 @@ public class Key : MonoBehaviour
 
     private IEnumerator HideMessage()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         GameManager.instance.DoorLockText.gameObject.SetActive(false);
     }
 }
