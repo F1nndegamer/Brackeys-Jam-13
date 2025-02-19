@@ -4,17 +4,12 @@ using UnityEngine;
 [Tooltip("the class to be used if there is anything to throw(arrows etc.)")]
 public class Dispenser : Traps
 {
+    [SerializeField] private float throwspeed = 10;
     [SerializeField] private GameObject thrownitem;
-
-    private void Update()
+    public override void WorkTrap(GameObject player)
     {
-        if (isActive && GameManager.instance.isTakenTreasure)
-        {
-            if (trapActivator != null)
-            {
-                GameObject threwitem = Instantiate(thrownitem, Vector3.right, Quaternion.identity);
-                threwitem.GetComponent<Rigidbody2D>().linearVelocity = Vector2.right;
-            }
-        }
+        base.WorkTrap(player);
+        GameObject threwitem = Instantiate(thrownitem, transform.position, Quaternion.identity);
+        threwitem.GetComponent<Rigidbody2D>().linearVelocityX = throwspeed;
     }
 }

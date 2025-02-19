@@ -4,7 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class Boulder : Traps
 {
-    public float boulderMove;
+    public Vector2 boulderMove;
+
+    private void Start()
+    {
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+    }
     public override void OnCollisionEnter2D(Collision2D collision)
     {
         if (GetComponent<Rigidbody2D>().linearVelocityX != 0.01f || GetComponent<Rigidbody2D>().linearVelocityY != 0.01f)
@@ -12,16 +17,9 @@ public class Boulder : Traps
             base.OnCollisionEnter2D(collision);
         }
     }
-    private void Update()
+    public override void WorkTrap(GameObject player)
     {
-        if (isActive && GameManager.instance.isTakenTreasure)
-        {
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            GetComponent<Rigidbody2D>().AddForceX(boulderMove, ForceMode2D.Impulse);
-        }
-        else
-        {
-            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        }
+        base.WorkTrap(player);
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 }
