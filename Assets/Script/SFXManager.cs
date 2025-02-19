@@ -4,13 +4,14 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance;
+    [Header("Audio Sources")]    
+    [SerializeField] private AudioSource footstepSource;
+    [SerializeField] private AudioSource sfxSource;
 
     [Header("Footstep Sounds")]
-    [SerializeField] private AudioSource footstepSource;
     [SerializeField] private AudioClip[] footstepClips;
 
     [Header("Jump Sound")]
-    [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip dubblejumpClip;
 
@@ -25,6 +26,10 @@ public class SFXManager : MonoBehaviour
     [Header("Conveer Belt Sounds")]
     [SerializeField] private AudioClip conveerBelt;
 
+    [Header("Tree Sounds")]
+    [SerializeField] private AudioClip HittingAir;
+    [SerializeField] private AudioClip HittingWood;
+    [SerializeField] private AudioClip TreeFall;
     private bool isPlayingFootsteps = false;
 
     private void Awake()
@@ -123,4 +128,26 @@ public class SFXManager : MonoBehaviour
             sfxSource.PlayOneShot(conveerBelt);
         }
     }
+    public void PlayWoodHitSound()
+    {
+        if (sfxSource != null && jumpClip != null)
+        {
+            sfxSource.PlayOneShot(HittingWood);
+        }
+    }
+    public void PlayAirHitSound()
+    {
+        if (sfxSource != null && jumpClip != null)
+        {
+            sfxSource.PlayOneShot(HittingAir);
+        }
+    }
+    public void PlayTreeFallSound()
+    {
+        if (sfxSource != null && jumpClip != null)
+        {
+            sfxSource.PlayOneShot(TreeFall);
+        }
+    }
+    
 }
