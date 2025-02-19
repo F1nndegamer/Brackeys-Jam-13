@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: d3392d98e1486fe438fb0c95d2dbd7c2
+guid: f5de425dda26b4c40b02b66f159fc179
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4037305469998616386
-    second: Woodcutter_attack2_0
+      213: -563011182774864289
+    second: Woodcutter_attack3_0
   - first:
-      213: 4990269489567953464
-    second: Woodcutter_attack2_1
+      213: -73837900130729904
+    second: Woodcutter_attack3_1
   - first:
-      213: 1700543365235308791
-    second: Woodcutter_attack2_2
+      213: 2892931569953311878
+    second: Woodcutter_attack3_2
   - first:
-      213: -8205589114870518797
-    second: Woodcutter_attack2_3
+      213: 4594443588837451308
+    second: Woodcutter_attack3_3
   - first:
-      213: -1331068528020860823
-    second: Woodcutter_attack2_4
+      213: 4528181625619920492
+    second: Woodcutter_attack3_4
   - first:
-      213: -4874985470358361502
-    second: Woodcutter_attack2_5
+      213: 6917326716163552830
+    second: Woodcutter_attack3_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,60 +111,42 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Woodcutter_attack2_0
+      name: Woodcutter_attack3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 28
-        height: 33
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: eb0bdfac01c98f7c0800000000000000
-      internalID: -4037305469998616386
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_attack2_1
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 0
-        width: 28
-        height: 34
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 832fa2349aff04540800000000000000
-      internalID: 4990269489567953464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Woodcutter_attack2_2
-      rect:
-        serializedVersion: 2
-        x: 95
-        y: 0
-        width: 26
         height: 35
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -174,19 +156,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f87ff94e2b899710800000000000000
-      internalID: 1700543365235308791
+      spriteID: f56b12eef48cf28f0800000000000000
+      internalID: -563011182774864289
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_3
+      name: Woodcutter_attack3_1
       rect:
         serializedVersion: 2
-        x: 150
+        x: 49
         y: 0
-        width: 24
+        width: 28
         height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -196,20 +178,64 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fba453dc24ef1e80800000000000000
-      internalID: -8205589114870518797
+      spriteID: 0504fbf22dca9fef0800000000000000
+      internalID: -73837900130729904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_4
+      name: Woodcutter_attack3_2
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68c849a7fe1c52820800000000000000
+      internalID: 2892931569953311878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Woodcutter_attack3_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 0
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c262a350a1eb2cf30800000000000000
+      internalID: 4594443588837451308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Woodcutter_attack3_4
       rect:
         serializedVersion: 2
         x: 198
         y: 0
-        width: 40
-        height: 29
+        width: 37
+        height: 33
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +244,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9605d9fd938178de0800000000000000
-      internalID: -1331068528020860823
+      spriteID: c66b689723557de30800000000000000
+      internalID: 4528181625619920492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Woodcutter_attack2_5
+      name: Woodcutter_attack3_5
       rect:
         serializedVersion: 2
-        x: 246
+        x: 247
         y: 0
-        width: 24
-        height: 31
+        width: 22
+        height: 34
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26a69122b82985cb0800000000000000
-      internalID: -4874985470358361502
+      spriteID: e367f30bff74fff50800000000000000
+      internalID: 6917326716163552830
       vertices: []
       indices: 
       edges: []
@@ -260,12 +286,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Woodcutter_attack2_0: -4037305469998616386
-      Woodcutter_attack2_1: 4990269489567953464
-      Woodcutter_attack2_2: 1700543365235308791
-      Woodcutter_attack2_3: -8205589114870518797
-      Woodcutter_attack2_4: -1331068528020860823
-      Woodcutter_attack2_5: -4874985470358361502
+      Woodcutter_attack3_0: -563011182774864289
+      Woodcutter_attack3_1: -73837900130729904
+      Woodcutter_attack3_2: 2892931569953311878
+      Woodcutter_attack3_3: 4594443588837451308
+      Woodcutter_attack3_4: 4528181625619920492
+      Woodcutter_attack3_5: 6917326716163552830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
