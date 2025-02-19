@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
          lastDashTime = Time.time;
         float originalGravity = rb.gravityScale;
-        //rb.gravityScale = 0f;
+        rb.gravityScale = 0f;
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
     
         SFXManager.Instance.PlayDashSound();
