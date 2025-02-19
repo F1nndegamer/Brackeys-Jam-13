@@ -22,6 +22,9 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip uiPressClip;
     [SerializeField] private AudioClip uiHoverClip;
 
+    [Header("Conveer Belt Sounds")]
+    [SerializeField] private AudioClip conveerBelt;
+
     private bool isPlayingFootsteps = false;
 
     private void Awake()
@@ -111,6 +114,13 @@ public class SFXManager : MonoBehaviour
         if (sfxSource != null && uiHoverClip != null)
         {
             sfxSource.PlayOneShot(uiHoverClip);
+        }
+    }
+    public void PlayConveerBeltSound()
+    {
+        if (sfxSource != null && conveerBelt != null)
+        {
+            sfxSource.PlayOneShot(conveerBelt);
         }
     }
 }

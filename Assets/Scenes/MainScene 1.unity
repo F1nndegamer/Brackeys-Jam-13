@@ -51230,6 +51230,7 @@ MonoBehaviour:
   dashRecoverClip: {fileID: 8300000, guid: c4d0cd7e88e63a348908117d86f4cc3e, type: 3}
   uiPressClip: {fileID: 8300000, guid: cf6b0fdb39919a344a73b2a75f6dc024, type: 3}
   uiHoverClip: {fileID: 8300000, guid: d1728748231ab9f40be56f6d8ef49c3b, type: 3}
+  conveerBelt: {fileID: 8300000, guid: a146753af5822f44c9479ac71eac79e4, type: 3}
 --- !u!1 &2092502985
 GameObject:
   m_ObjectHideFlags: 0

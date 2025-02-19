@@ -23,7 +23,8 @@ public class ConveerBelt : MonoBehaviour
 
         if (rotation == Rotation.rigth)
         {
-            //play animation and sfx
+            //play animation
+            SFXManager.Instance.PlayConveerBeltSound();
             Vector2 pos = rb2D.position;
             rb2D.position += Vector2.left * speed * Time.fixedDeltaTime;
             rb2D.MovePosition(pos);
@@ -31,6 +32,7 @@ public class ConveerBelt : MonoBehaviour
         else if (rotation == Rotation.left)
         {
             //play animation and sfx
+            SFXManager.Instance.PlayConveerBeltSound();
             Vector2 pos = rb2D.position;
             rb2D.position += Vector2.left * speed * Time.fixedDeltaTime * -1;
             rb2D.MovePosition(pos);
