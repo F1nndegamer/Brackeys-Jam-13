@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 [System.Serializable]
 public class InventorySlot {
     [Header("UI Reference")]
@@ -29,6 +30,7 @@ public class Inventory : MonoBehaviour {
     [Tooltip("The transform to which the active inventory item will be parented so that it follows the player (for example, a hand or attachment point).")]
     public Transform playerFollowPoint;
     private int activeSlotIndex = -1;
+    public static Inventory instance;
     void Update()
     {
         foreach(GameObject toplayer in TpObjects)
@@ -158,7 +160,16 @@ public class Inventory : MonoBehaviour {
         }
         return null;
     }
+    public GameObject GetActiveItem()
+    {
+        if (activeSlotIndex < 0 || activeSlotIndex >= slots.Length)
+        {
+            return null;
+        }
     
+         return slots[activeSlotIndex].item;
+    }
+
    public void DropItem() {
     if (activeSlotIndex < 0 || activeSlotIndex >= slots.Length) {
         Debug.Log("No item is currently selected to drop.");
