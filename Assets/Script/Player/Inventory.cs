@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 [System.Serializable]
 public class InventorySlot {
     [Header("UI Reference")]
@@ -14,6 +15,9 @@ public class InventorySlot {
 
     [Tooltip("If true, this slot is locked and cannot accept a new item.")]
     public bool isLocked = false;
+
+    [Tooltip("Unique 4-digit code for identifying the item.")]
+    public int itemCode;
 }
 
 public class Inventory : MonoBehaviour {
@@ -54,7 +58,7 @@ public class Inventory : MonoBehaviour {
             }
         }
     }
-    public bool AddItem(GameObject newItem, bool doesTpToPlayer = false) {
+    public bool AddItem(GameObject newItem, int itemCode, bool doesTpToPlayer = false) {
         if(doesTpToPlayer)
         {
             TpObjects.Add(newItem);
@@ -73,6 +77,7 @@ public class Inventory : MonoBehaviour {
         for (int i = 0; i < slots.Length; i++) {
             if (!slots[i].isLocked && slots[i].item == null) {
                 slots[i].item = newItem;
+                slots[i].itemCode = itemCode;
                 
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = sr.sprite;
@@ -97,6 +102,7 @@ public class Inventory : MonoBehaviour {
                 }
 
                 slots[i].item = null;
+                slots[i].itemCode = 0;
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = emptySprite;
                 }
@@ -149,13 +155,10 @@ public class Inventory : MonoBehaviour {
         }
         activeSlotIndex = -1;
     }
-    public GameObject FindItemByID(int id) {
+    public GameObject FindItemByCode(int code) {
         for (int i = 0; i < slots.Length; i++) {
-            if (slots[i].item != null) {
-                Key keyComponent = slots[i].item.GetComponent<Key>();
-                if (keyComponent != null && keyComponent.keyID == id) {
-                    return slots[i].item;
-                }
+            if (slots[i].item != null && slots[i].itemCode == code) {
+                return slots[i].item;
             }
         }
         return null;
@@ -178,13 +181,13 @@ public class Inventory : MonoBehaviour {
 
     InventorySlot slot = slots[activeSlotIndex];
     if (slot.item != null) {
-        slot.item.transform.position = playerFollowPoint.position; // Drop item at player's position
-        slot.item.SetActive(true); // Make it visible in the world
-        TpObjects.Remove(slot.item); // Remove from following objects
-        slot.item = null; // Remove from inventory
-        slot.icon.sprite = emptySprite; // Reset UI
-        activeSlotIndex = -1; // Deselect item
-    }
-}
-
+        slot.item.transform.position = playerFollowPoint.position;
+        slot.item.SetActive(true);
+        TpObjects.Remove(slot.item);
+        slot.item = null;
+        slot.itemCode = 0;
+        slot.icon.sprite = emptySprite;
+        activeSlotIndex = -1;
+     }
+   }
 }
