@@ -17,9 +17,9 @@ public class PlayerChoping : MonoBehaviour
             AttackTree();
         }
     }
-    void Start()
+    void Awake()
     {
-     instance = this;   
+        instance = this;   
     }
     private bool IsAxeActive()
     {
