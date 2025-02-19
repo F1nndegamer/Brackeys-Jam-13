@@ -7,7 +7,7 @@ public class PlayerChoping : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private Animator animator;
     
-    public int axeID;
+    public int axeCode;
     
     void Update()
     {
@@ -25,8 +25,8 @@ public class PlayerChoping : MonoBehaviour
         GameObject activeItem = inventory.GetActiveItem();
         if (activeItem == null) return false;
         
-        Key keyComponent = activeItem.GetComponent<Key>();
-        return keyComponent != null && keyComponent.keyID == axeID;
+        if(inventory.FindItemByCode(axeCode)) return true;
+        else return false;
     }
 
     private void AttackTree()
