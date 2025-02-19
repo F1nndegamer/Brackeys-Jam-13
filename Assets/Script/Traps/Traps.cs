@@ -13,15 +13,18 @@ public class Traps : MonoBehaviour
             {
                 if (trapActivator.isActive)
                 {
-                    Debug.Log("Damage:" + damage); //Base Trap work
-                    collision.gameObject.GetComponent<PlayerRespawn>().Respawn();
+                    TrapWork(collision.gameObject);
                 }
             }
             else
             {
-                Debug.Log("Damage:" + damage); //Base Trap work
-                collision.gameObject.GetComponent<PlayerRespawn>().Respawn();
+                TrapWork(collision.gameObject);
             }
         }
+    }
+    void TrapWork(GameObject player) //Base Trap work
+    {
+        Debug.Log("Damage:" + damage); 
+        player.GetComponent<PlayerRespawn>().Respawn();
     }
 }
