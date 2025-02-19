@@ -6,8 +6,9 @@ public class PlayerChoping : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private Animator animator;
-    
-    public int axeCode;
+
+    public static PlayerChoping instance;
+    public int[] axeCode = new int[1];
     
     void Update()
     {
@@ -16,7 +17,10 @@ public class PlayerChoping : MonoBehaviour
             AttackTree();
         }
     }
-
+    void Awake()
+    {
+        instance = this;   
+    }
     private bool IsAxeActive()
     {
         Inventory inventory = PlayerScript.instance.inventory;
@@ -24,9 +28,12 @@ public class PlayerChoping : MonoBehaviour
         
         GameObject activeItem = inventory.GetActiveItem();
         if (activeItem == null) return false;
-        
-        if(inventory.FindItemByCode(axeCode)) return true;
-        else return false;
+        foreach(int axe in axeCode)
+        {
+            if(inventory.FindItemByCode(axe)) return true;
+            else return false;
+        }
+        return false;
     }
 
     private void AttackTree()
