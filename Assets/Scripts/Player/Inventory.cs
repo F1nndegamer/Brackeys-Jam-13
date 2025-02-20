@@ -3,6 +3,9 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using System.Net;
+using System.Linq;
+using NUnit.Framework;
 [System.Serializable]
 public class InventorySlot {
     [Header("UI Reference")]
@@ -27,7 +30,7 @@ public class Inventory : MonoBehaviour {
     [Header("Inventory Setup (Exactly 2 Slots)")]
     [Tooltip("Assign 2 inventory slots with their UI Image (and ensure each Image has a Button component).")]
     public InventorySlot[] slots = new InventorySlot[2];
-    private List<GameObject> TpObjects = new List<GameObject>();
+    private Dictionary<GameObject,bool> TpObjects = new Dictionary<GameObject, bool>();
 
     [Header("UI Settings")]
     [Tooltip("Sprite to show when a slot is empty.")]
@@ -40,7 +43,7 @@ public class Inventory : MonoBehaviour {
     public static Inventory instance;
     void Update()
     {
-        foreach(GameObject toplayer in TpObjects)
+        foreach(GameObject toplayer in TpObjects.Keys)
         {
             toplayer.transform.position = playerFollowPoint.position;
         }
@@ -64,7 +67,7 @@ public class Inventory : MonoBehaviour {
     public bool AddItem(GameObject newItem, int itemCode, bool doesTpToPlayer = false) {
         if(doesTpToPlayer)
         {
-            TpObjects.Add(newItem);
+            TpObjects.Add(newItem, false);
         }
         if (newItem == null) {
             Debug.LogWarning("Attempted to add a null item.");
@@ -81,7 +84,7 @@ public class Inventory : MonoBehaviour {
             if (!slots[i].isLocked && slots[i].item == null) {
                 slots[i].item = newItem;
                 slots[i].itemCode = itemCode;
-                slots[i].itemWasTaken = transform.position;
+                slots[i].itemWasTaken = newItem.transform.position;
                 
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = sr.sprite;
@@ -202,13 +205,37 @@ public class Inventory : MonoBehaviour {
             InventorySlot slot = slots[i];
             if (slot.item != null)
             {
-                slot.item.transform.position = slot.itemWasTaken;
-                slot.item.SetActive(true);
-                TpObjects.Remove(slot.item);
-                slot.item = null;
-                slot.itemCode = 0;
-                slot.icon.sprite = emptySprite;
-                activeSlotIndex = -1;
+                bool y;
+                bool x = TpObjects.TryGetValue(slot.item, out y);
+                if (!y)
+                {
+                    slot.item.transform.position = slot.itemWasTaken;
+                    slot.item.SetActive(true);
+                    TpObjects.Remove(slot.item);
+                    slot.item = null;
+                    slot.itemCode = 0;
+                    slot.icon.sprite = emptySprite;
+                    activeSlotIndex = -1;
+                }
+            }
+        }
+    }
+    public void SaveItem()
+    {
+        GameObject[] x = new GameObject[2];
+        for (int i = 0; i < slots.Length; i++)
+        {
+            x[i] = slots[i].item;
+        }
+        foreach (var key in TpObjects.Keys.ToList())
+        {
+            if (x.Contains(key))
+            {
+                TpObjects[key] = true;
+            }
+            else
+            {
+                TpObjects[key] = false;
             }
         }
     }
