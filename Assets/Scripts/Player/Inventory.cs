@@ -18,6 +18,9 @@ public class InventorySlot {
 
     [Tooltip("Unique 4-digit code for identifying the item.")]
     public int itemCode;
+
+    [Tooltip("keeps the location where the item was taken so that the player can go there again when they die")]
+    public Vector2 itemWasTaken;
 }
 
 public class Inventory : MonoBehaviour {
@@ -78,6 +81,7 @@ public class Inventory : MonoBehaviour {
             if (!slots[i].isLocked && slots[i].item == null) {
                 slots[i].item = newItem;
                 slots[i].itemCode = itemCode;
+                slots[i].itemWasTaken = transform.position;
                 
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = sr.sprite;
@@ -103,6 +107,7 @@ public class Inventory : MonoBehaviour {
 
                 slots[i].item = null;
                 slots[i].itemCode = 0;
+                slots[i].itemWasTaken = Vector2.zero;
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = emptySprite;
                 }
@@ -190,4 +195,21 @@ public class Inventory : MonoBehaviour {
         activeSlotIndex = -1;
      }
    }
+    public void DieDropItem()
+    {
+        for (int i = 0; i < slots.Length; i++)
+        {
+            InventorySlot slot = slots[i];
+            if (slot.item != null)
+            {
+                slot.item.transform.position = slot.itemWasTaken;
+                slot.item.SetActive(true);
+                TpObjects.Remove(slot.item);
+                slot.item = null;
+                slot.itemCode = 0;
+                slot.icon.sprite = emptySprite;
+                activeSlotIndex = -1;
+            }
+        }
+    }
 }

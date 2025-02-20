@@ -16,5 +16,6 @@ public class PlayerRespawn : MonoBehaviour
             transform.position = GameManager.instance.GetCheckpoint();
         else
             transform.position = startPos;
+        PlayerScript.instance.inventory.DieDropItem();
     }
 }
