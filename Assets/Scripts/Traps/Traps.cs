@@ -12,6 +12,7 @@ public class Traps : MonoBehaviour
         }
     }
 
+    [Tooltip("function to run traps")]
     public virtual void WorkTrap(GameObject player)
     {
         Debug.Log("Damage:" + damage); 
