@@ -131374,6 +131374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2092502990}
   - component: {fileID: 2092502989}
+  - component: {fileID: 2092502996}
   - component: {fileID: 2092502994}
   - component: {fileID: 2092502991}
   - component: {fileID: 2092502988}
@@ -131628,6 +131629,18 @@ MonoBehaviour:
   attackRange: 0.5
   animator: {fileID: 0}
   axeCode: 
+--- !u!114 &2092502996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092502985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e28bee43638216d4c85723edfd10d2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &16130424342783965
 SpriteRenderer:
   m_ObjectHideFlags: 0
