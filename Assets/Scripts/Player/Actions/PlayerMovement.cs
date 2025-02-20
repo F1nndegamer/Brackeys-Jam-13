@@ -7,13 +7,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     private float moveInput;
-    private int debugY;
 
     [Header("Jump Settings")]
     public float jumpForce = 12f;
     private int jumpCount = 0;
     private bool isGrounded;
-    [SerializeField] private float yaxisSpeedLimit = -15;
 
     [Header("Dash Settings")]
     public float dashSpeed = 20f;
@@ -81,7 +79,6 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
         }
-        debugY = (int)rb.linearVelocityY;
     }
 
     void FixedUpdate()
@@ -106,12 +103,6 @@ public class PlayerMovement : MonoBehaviour
         if (!isDashing)
         {
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-        }
-
-        //falling gugfix
-        if (rb.linearVelocityY < yaxisSpeedLimit)
-        {
-            rb.linearVelocityY = yaxisSpeedLimit;
         }
 
         /* --- Footstep SFX Trigger ---
