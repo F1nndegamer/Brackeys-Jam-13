@@ -89,11 +89,12 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
         // Reset jump count on landing
-        if (isGrounded && !wasGrounded)
+        if (isGrounded)
         {
             jumpCount = 0;
             animator.SetBool("isJumping", false);
         }
+        
         if(!isGrounded && jumpCount == 0)
         {
             jumpCount = 1;
