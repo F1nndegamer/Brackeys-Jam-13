@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x)); 
+        animator.SetFloat("yVelocity", rb.linearVelocity.y); 
         // Ground detection
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);

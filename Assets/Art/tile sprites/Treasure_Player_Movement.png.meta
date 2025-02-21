@@ -1,0 +1,715 @@
+fileFormatVersion: 2
+guid: a92eb303f47fac7478ff212512d2540d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7962356590147227128
+    second: Treasure_Player_Movement_0
+  - first:
+      213: 6343093973000661223
+    second: Treasure_Player_Movement_1
+  - first:
+      213: 4287808389424298558
+    second: Treasure_Player_Movement_2
+  - first:
+      213: 1717067196963273716
+    second: Treasure_Player_Movement_3
+  - first:
+      213: -8806839784301466226
+    second: Treasure_Player_Movement_4
+  - first:
+      213: 4056462186120133795
+    second: Treasure_Player_Movement_5
+  - first:
+      213: -4156989464378142534
+    second: Treasure_Player_Movement_6
+  - first:
+      213: -7355313188067310448
+    second: Treasure_Player_Movement_7
+  - first:
+      213: 9031317030037328709
+    second: Treasure_Player_Movement_8
+  - first:
+      213: -4110469877150722798
+    second: Treasure_Player_Movement_9
+  - first:
+      213: 7167776772528636499
+    second: Treasure_Player_Movement_10
+  - first:
+      213: 2817542269919095764
+    second: Treasure_Player_Movement_11
+  - first:
+      213: -3339339262864695729
+    second: Treasure_Player_Movement_12
+  - first:
+      213: 6041133951335348991
+    second: Treasure_Player_Movement_13
+  - first:
+      213: 7449944954800081342
+    second: Treasure_Player_Movement_14
+  - first:
+      213: -3457327913017199219
+    second: Treasure_Player_Movement_15
+  - first:
+      213: -5227757330593958780
+    second: Treasure_Player_Movement_16
+  - first:
+      213: 9068092828190948293
+    second: Treasure_Player_Movement_17
+  - first:
+      213: 6387463934008730878
+    second: Treasure_Player_Movement_18
+  - first:
+      213: 6765881372003949042
+    second: Treasure_Player_Movement_19
+  - first:
+      213: 5479940562331763740
+    second: Treasure_Player_Movement_20
+  - first:
+      213: -2101561131578044236
+    second: Treasure_Player_Movement_21
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 299
+        width: 18
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802b84d1ed6008190800000000000000
+      internalID: -7962356590147227128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 250
+        width: 18
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e820ad7c52370850800000000000000
+      internalID: 6343093973000661223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_2
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 250
+        width: 18
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3a339c230b518b30800000000000000
+      internalID: 4287808389424298558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 250
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fbb87aa48f34d710800000000000000
+      internalID: 1717067196963273716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_4
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 250
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8deee670e1d7c580800000000000000
+      internalID: -8806839784301466226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_5
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 201
+        width: 22
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3acbe70cdd27b4830800000000000000
+      internalID: 4056462186120133795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_6
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 201
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab013b85b186f46c0800000000000000
+      internalID: -4156989464378142534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_7
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 202
+        width: 24
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 094808520adace990800000000000000
+      internalID: -7355313188067310448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_8
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 202
+        width: 22
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5439f452dfea55d70800000000000000
+      internalID: 9031317030037328709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_9
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 201
+        width: 14
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 215dc78cc6da4f6c0800000000000000
+      internalID: -4110469877150722798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_10
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 202
+        width: 23
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3528dd38ffe097360800000000000000
+      internalID: 7167776772528636499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_11
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 153
+        width: 23
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dbec2a34cbe91720800000000000000
+      internalID: 2817542269919095764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_12
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 153
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e5f6c02a848a1d0800000000000000
+      internalID: -3339339262864695729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_13
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 153
+        width: 30
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffa35e9425b66d350800000000000000
+      internalID: 6041133951335348991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_14
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 153
+        width: 38
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb982130775836760800000000000000
+      internalID: 7449944954800081342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_15
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 153
+        width: 38
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d853190b49a1500d0800000000000000
+      internalID: -3457327913017199219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_16
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 102
+        width: 22
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484b00ad7664377b0800000000000000
+      internalID: -5227757330593958780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_17
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 52
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cbb696e16658dd70800000000000000
+      internalID: 9068092828190948293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_18
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 5
+        width: 20
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef4a5321b94d4a850800000000000000
+      internalID: 6387463934008730878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_19
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 5
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f95abab24d35ed50800000000000000
+      internalID: 6765881372003949042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 5
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c140a0058e8ac0c40800000000000000
+      internalID: 5479940562331763740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Treasure_Player_Movement_21
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 5
+        width: 26
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b0d58e0941c5d2e0800000000000000
+      internalID: -2101561131578044236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 70fbb716deaf25b40a5b5e7aa2dfc6cb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Treasure_Player_Movement_0: -7962356590147227128
+      Treasure_Player_Movement_1: 6343093973000661223
+      Treasure_Player_Movement_10: 7167776772528636499
+      Treasure_Player_Movement_11: 2817542269919095764
+      Treasure_Player_Movement_12: -3339339262864695729
+      Treasure_Player_Movement_13: 6041133951335348991
+      Treasure_Player_Movement_14: 7449944954800081342
+      Treasure_Player_Movement_15: -3457327913017199219
+      Treasure_Player_Movement_16: -5227757330593958780
+      Treasure_Player_Movement_17: 9068092828190948293
+      Treasure_Player_Movement_18: 6387463934008730878
+      Treasure_Player_Movement_19: 6765881372003949042
+      Treasure_Player_Movement_2: 4287808389424298558
+      Treasure_Player_Movement_20: 5479940562331763740
+      Treasure_Player_Movement_21: -2101561131578044236
+      Treasure_Player_Movement_3: 1717067196963273716
+      Treasure_Player_Movement_4: -8806839784301466226
+      Treasure_Player_Movement_5: 4056462186120133795
+      Treasure_Player_Movement_6: -4156989464378142534
+      Treasure_Player_Movement_7: -7355313188067310448
+      Treasure_Player_Movement_8: 9031317030037328709
+      Treasure_Player_Movement_9: -4110469877150722798
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
