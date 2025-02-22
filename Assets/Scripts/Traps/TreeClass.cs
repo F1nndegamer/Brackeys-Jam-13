@@ -8,7 +8,6 @@ public class TreeClass : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AnimationClip treeFalling;
     [SerializeField] private AnimationClip treeFell;
-    [SerializeField] private float angel;
 
     private void Update()
     {
