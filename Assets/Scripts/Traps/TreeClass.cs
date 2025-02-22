@@ -21,5 +21,6 @@ public class TreeClass : MonoBehaviour
     {
         SFXManager.Instance.PlayTreeFallSound();
         animator.SetBool("isFalling", true);
+        isFalling = true;
     }
 }

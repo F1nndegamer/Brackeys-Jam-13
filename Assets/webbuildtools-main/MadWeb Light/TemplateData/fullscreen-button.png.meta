@@ -185,7 +185,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fullscreen-button_0: 8698634512387734657
+      fullscreen-button_1: -4190379139828394581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
