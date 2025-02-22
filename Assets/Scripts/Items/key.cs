@@ -4,6 +4,8 @@ using System.Collections;
 
 public class Key : MonoBehaviour
 {
+    
+    public Transform TpPos;
     public int keyID;
     private bool isPickedUp = false;
     private static HashSet<int> usedCodes = new HashSet<int>();

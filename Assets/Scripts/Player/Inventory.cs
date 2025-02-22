@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using System.Reflection;
 
 [System.Serializable]
 public class InventorySlot {
@@ -84,7 +85,17 @@ public class Inventory : MonoBehaviour {
 
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = sr.sprite;
-                    //AdjustImageAspect(slots[i].icon, sr.sprite);
+                }
+
+                // Dynamically assign FollowLocation from item's script
+                MonoBehaviour[] itemScripts = newItem.GetComponents<MonoBehaviour>();
+                foreach (MonoBehaviour script in itemScripts) {
+                    FieldInfo field = script.GetType().GetField("TpPos");
+                    if (field != null && field.FieldType == typeof(Transform)) {
+                        slots[i].FollowLocation = (Transform)field.GetValue(script);
+                        Debug.Log($"Assigned FollowLocation from {script.GetType().Name} for item {newItem.name}");
+                        break;
+                    }
                 }
 
                 newItem.SetActive(false);
@@ -104,7 +115,6 @@ public class Inventory : MonoBehaviour {
         float spriteHeight = sprite.texture.height;
         float aspectRatio = spriteWidth / spriteHeight;
 
-        // Maintain the original aspect ratio by adjusting width or height
         if (aspectRatio > 1) {
             rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, rectTransform.sizeDelta.x / aspectRatio);
         } else {
@@ -162,7 +172,7 @@ public class Inventory : MonoBehaviour {
 
     private void ActivateItem(GameObject item) {
         if (slots[activeSlotIndex].FollowLocation == null) {
-            Debug.LogWarning("Player follow point is not set.");
+            Debug.LogWarning("FollowLocation is not set.");
             return;
         }
         item.SetActive(true);

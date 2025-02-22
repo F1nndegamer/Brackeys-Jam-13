@@ -4,6 +4,7 @@ using System.Collections;
 
 public class Axe : MonoBehaviour
 {
+    public Transform TpPos;
     private bool isPickedUp = false;
     private static HashSet<int> usedCodes = new HashSet<int>();
     [SerializeField] private int uniqueCode;

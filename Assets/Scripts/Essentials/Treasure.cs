@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Treasure : MonoBehaviour
 {
+    
+    public Transform TpPos;
     private bool isTaken;
     private static HashSet<int> usedCodes = new HashSet<int>();
     [SerializeField] private int uniqueCode;
