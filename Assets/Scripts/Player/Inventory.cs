@@ -61,13 +61,6 @@ public class Inventory : MonoBehaviour {
     }
 
     public bool AddItem(GameObject newItem, int itemCode, bool doesTpToPlayer = false) {
-        //the reason for the chest bug is that it adds it to the TpObjects dictionary even though it doesn't get item here, so I put it in the comment line -muzant9
-        /*
-        if (doesTpToPlayer)
-        {
-            TpObjects.Add(newItem, false);
-        }
-        */
         if (newItem == null) {
             Debug.LogWarning("Attempted to add a null item.");
             return false;
@@ -88,7 +81,7 @@ public class Inventory : MonoBehaviour {
 
                 if (slots[i].icon != null) {
                     slots[i].icon.sprite = sr.sprite;
-                    AdjustImageAspect(slots[i].icon, sr.sprite);
+                    //AdjustImageAspect(slots[i].icon, sr.sprite);
                 }
 
                 newItem.SetActive(false);
