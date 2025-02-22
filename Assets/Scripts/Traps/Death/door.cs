@@ -4,14 +4,15 @@ using System.Collections;
 public class Door : MonoBehaviour, KeyFunction
 {
     private BoxCollider2D[] colliders;
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer[] spriteRenderer;
 
     public int doorID; // Changed 'doornum' to 'doorID' for clarity
 
     private void Start()
     {
         colliders = GetComponents<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
+
         ToggleComponentsState();
     }
 
@@ -49,9 +50,9 @@ public class Door : MonoBehaviour, KeyFunction
                 collider.enabled = newState;
             }
 
-            if (spriteRenderer != null)
+            foreach (SpriteRenderer renderer in spriteRenderer)
             {
-                spriteRenderer.enabled = newState;
+                renderer.enabled = newState;
             }
         }
         else
