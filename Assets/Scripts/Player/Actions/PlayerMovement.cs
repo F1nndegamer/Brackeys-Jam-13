@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 12f;
     private int jumpCount = 0;
     private bool isGrounded;
+    private bool isTree;
 
     [Header("Dash Settings")]
     public float dashSpeed = 20f;
@@ -21,12 +22,12 @@ public class PlayerMovement : MonoBehaviour
     private int facingDirection = 1; // 1 = right, -1 = left
     public float dashCooldown = 1.1f;
     private float lastDashTime = -Mathf.Infinity;
-    private TrailRenderer tr;
 
     [Header("Ground Detection")]
     public Transform groundCheck;
     public float groundCheckRadius = 0.2f;
     public LayerMask groundLayer;
+    public LayerMask treeLayer;
 
     private Rigidbody2D rb;
     Animator animator;
@@ -35,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        tr = GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -88,15 +88,16 @@ public class PlayerMovement : MonoBehaviour
         // Ground detection
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        isTree = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, treeLayer);
 
         // Reset jump count on landing
-        if (isGrounded)
+        if (isGrounded || isTree)
         {
             jumpCount = 0;
             animator.SetBool("isJumping", false);
         }
         
-        if(!isGrounded && jumpCount == 0)
+        if((!isGrounded || isTree) && jumpCount == 0)
         {
             jumpCount = 1;
         }
@@ -113,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
          2. There is horizontal movement.
          3. The player is not dashing. */
         
-        if (isGrounded && Mathf.Abs(moveInput) > 0.1f && !isDashing)
+        if ((isGrounded || isTree) && Mathf.Abs(moveInput) > 0.1f && !isDashing)
         {
             SFXManager.Instance.StartFootsteps();
         }
@@ -143,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
-         animator.SetBool("isDashing", true);
+        animator.SetBool("isDashing", true);
         canDash = false;
         isDashing = true;
          lastDashTime = Time.time;
@@ -152,23 +153,15 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
     
         SFXManager.Instance.PlayDashSound();
-        if(tr != null)
-        {
-        tr.emitting = true;
-        }
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
         
-         animator.SetBool("isDashing", false);
+        animator.SetBool("isDashing", false);
         yield return new WaitForSeconds(0.5f); //Play the sound earlier
         SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(0.6f); // Dash cooldown
         canDash = true;
-        if(tr != null)
-        {
-        tr.emitting = false;
-        }
     }
     public float GetDashCooldownRemaining()
     {

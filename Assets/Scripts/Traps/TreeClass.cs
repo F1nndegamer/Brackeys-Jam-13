@@ -1,20 +1,14 @@
+using UnityEditor;
 using UnityEngine;
 
 public class TreeClass : MonoBehaviour
 {
     public int health = 3; // Default health value, can be adjusted per tree
-    private Rigidbody2D rb;
     private bool isFalling = false;
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody2D>();
-            rb.isKinematic = true; // Keep it static until it falls
-        }
-    }
+    [SerializeField] private Animator animator;
+    [SerializeField] private AnimationClip treeFalling;
+    [SerializeField] private AnimationClip treeFell;
+    [SerializeField] private float angel;
 
     private void Update()
     {
@@ -27,8 +21,6 @@ public class TreeClass : MonoBehaviour
     private void ChopDown()
     {
         SFXManager.Instance.PlayTreeFallSound();
-        isFalling = true;
-        rb.isKinematic = false; // Enable physics
-        rb.AddTorque(10f, ForceMode2D.Impulse); // Apply a random torque for a falling effecta
+        animator.SetBool("isFalling", true);
     }
 }
