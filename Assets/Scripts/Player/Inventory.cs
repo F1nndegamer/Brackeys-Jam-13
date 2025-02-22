@@ -22,6 +22,9 @@ public class InventorySlot {
 
     [Tooltip("Keeps the location where the item was taken so that the player can go there again when they die.")]
     public Vector2 itemWasTaken;
+
+    [Tooltip("The Location where the object goes to when activated.")]
+    public Transform FollowLocation;
 }
 
 public class Inventory : MonoBehaviour {
@@ -39,7 +42,7 @@ public class Inventory : MonoBehaviour {
 
     void Update() {
         foreach (GameObject toplayer in TpObjects.Keys) {
-            toplayer.transform.position = playerFollowPoint.position;
+            toplayer.transform.position = slots[activeSlotIndex].FollowLocation.position;
         }
     }
 
@@ -158,7 +161,7 @@ public class Inventory : MonoBehaviour {
     }
 
     private void ActivateItem(GameObject item) {
-        if (playerFollowPoint == null) {
+        if (slots[activeSlotIndex].FollowLocation == null) {
             Debug.LogWarning("Player follow point is not set.");
             return;
         }
@@ -199,7 +202,7 @@ public class Inventory : MonoBehaviour {
 
         InventorySlot slot = slots[activeSlotIndex];
         if (slot.item != null) {
-            slot.item.transform.position = playerFollowPoint.position;
+            slot.item.transform.position = slots[activeSlotIndex].FollowLocation.position;
             slot.item.SetActive(true);
             TpObjects.Remove(slot.item);
             slot.item = null;
