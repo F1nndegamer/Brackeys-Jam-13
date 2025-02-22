@@ -143,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator Dash()
     {
+         animator.SetBool("isDashing", true);
         canDash = false;
         isDashing = true;
          lastDashTime = Time.time;
@@ -158,6 +159,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         rb.gravityScale = originalGravity;
         isDashing = false;
+        
+         animator.SetBool("isDashing", false);
         yield return new WaitForSeconds(0.5f); //Play the sound earlier
         SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(0.6f); // Dash cooldown

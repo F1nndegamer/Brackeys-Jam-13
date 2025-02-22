@@ -19,7 +19,8 @@ public class PlayerChoping : MonoBehaviour
     }
     void Awake()
     {
-        instance = this;   
+        instance = this;  
+        animator = GetComponent<Animator>(); 
     }
     private bool IsAxeActive()
     {
