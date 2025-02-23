@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
-        else if (Input.GetKeyDown(KeyCode.LeftControl) && canDash && !isDashing)
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing)
         {
             StartCoroutine(Dash());
         }
