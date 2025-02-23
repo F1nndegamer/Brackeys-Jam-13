@@ -12,7 +12,7 @@ public class PlayerChoping : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && IsAxeActive())
+        if (Input.GetKeyDown(KeyCode.E) && IsAxeActive())
         {
             AttackTree();
         }
