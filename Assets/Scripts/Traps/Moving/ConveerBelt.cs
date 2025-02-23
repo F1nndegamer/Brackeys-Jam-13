@@ -1,24 +1,37 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-public class ConveyorBelt : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+public class ConveerBelt : MonoBehaviour
 {
     public enum Rotation { Right, Left, Stop }
 
-    [SerializeField] public float speed = 1;
+    private Rigidbody2D rb2D;
+    [SerializeField] private float speed = 1;
     public Rotation rotation;
+    public bool activateswitch;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void Start()
     {
-        Rigidbody2D objRb = collision.rigidbody;
-        if (objRb != null)
-        {
-            Vector2 moveDirection = rotation == Rotation.Left ? Vector2.left : Vector2.right;
+        rb2D = GetComponent<Rigidbody2D>();
+    }
 
-            if (rotation != Rotation.Stop)
-            {
-                objRb.linearVelocity = new Vector2(moveDirection.x * speed, objRb.linearVelocity.y);
-            }
+    private void FixedUpdate()
+    {
+        if (rotation == Rotation.Left)
+        {
+            Vector2 pos = rb2D.position;
+            rb2D.position += Vector2.right * speed * Time.fixedDeltaTime;
+            rb2D.MovePosition(pos);
+        }
+        else if (rotation == Rotation.Right)
+        {
+            Vector2 pos = rb2D.position;
+            rb2D.position += -Vector2.right * speed * Time.fixedDeltaTime;
+            rb2D.MovePosition(pos);
+        }
+        else
+        {
+            //do nothings
         }
     }
 }

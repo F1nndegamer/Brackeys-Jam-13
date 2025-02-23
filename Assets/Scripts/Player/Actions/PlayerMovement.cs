@@ -30,11 +30,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask treeLayer;
 
     private Rigidbody2D rb;
-    private Animator animator;
-
-    // Conveyor Belt Variables
-    private bool isOnConveyor = false;
-    private float conveyorBeltSpeed = 0f;
+    Animator animator;
 
     void Start()
     {
@@ -44,16 +40,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (transform.position.y < -40)
+        if(transform.position.y < -40)
         {
             GetComponent<PlayerRespawn>().Respawn();
         }
-
         // Get horizontal input
         moveInput = Input.GetAxisRaw("Horizontal");
 
         // Jumping
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && jumpCount < 2)
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < 2 || Input.GetKeyDown(KeyCode.W) && jumpCount < 2 || Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
             Jump();
         }
@@ -75,26 +70,26 @@ public class PlayerMovement : MonoBehaviour
         // Flip player sprite
         if (moveInput != 0)
         {
-            if (transform.localScale.x < 0 && facingDirection == 1)
+            if(transform.localScale.x < 0 && facingDirection == 1)
             {
-                transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
-            if (transform.localScale.x > 0 && facingDirection == -1)
+            if(transform.localScale.x > 0 && facingDirection == -1)
             {
-                transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
             }
         }
     }
 
     void FixedUpdate()
     {
-        animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x));
-        animator.SetFloat("yVelocity", rb.linearVelocity.y);
-
-            bool wasGrounded = isGrounded;
+        animator.SetFloat("xVelocity", Math.Abs(rb.linearVelocity.x)); 
+        animator.SetFloat("yVelocity", rb.linearVelocity.y); 
         // Ground detection
+        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         isTree = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, treeLayer);
+
         // Reset jump count on landing
         if (isGrounded || isTree)
         {
@@ -102,18 +97,23 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
         
-        if ((!isGrounded || isTree) && jumpCount == 0)
+        if((!isGrounded || isTree) && jumpCount == 0)
         {
             jumpCount = 1;
         }
 
-        // Apply movement (include conveyor belt speed)
+        // Move player (disable movement while dashing)
         if (!isDashing)
         {
-            rb.linearVelocity = new Vector2(moveInput * moveSpeed + conveyorBeltSpeed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
         }
 
-        // Footstep SFX logic
+        /* --- Footstep SFX Trigger ---
+         Only play footsteps when:
+         1. The player is grounded.
+         2. There is horizontal movement.
+         3. The player is not dashing. */
+        
         if ((isGrounded || isTree) && Mathf.Abs(moveInput) > 0.1f && !isDashing)
         {
             SFXManager.Instance.StartFootsteps();
@@ -122,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         {
             SFXManager.Instance.StopFootsteps();
         }
+        
     }
 
     void Jump()
@@ -129,75 +130,47 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         jumpCount++;
         animator.SetBool("isJumping", true);
-        
-        if (jumpCount == 1)
+        if(jumpCount == 1)
         {
-            SFXManager.Instance.PlayJumpSound();
-            Debug.Log("jump 1");
+             SFXManager.Instance.PlayJumpSound();
+             Debug.Log("jump 1");
         }
-        else if (jumpCount > 1)
+        else if(jumpCount > 1)
         {
             SFXManager.Instance.PlayDubbleJumpSound();
             Debug.Log("jump 2");
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.name);
+        
+        
     }
-
     IEnumerator Dash()
     {
         animator.SetBool("isDashing", true);
         canDash = false;
         isDashing = true;
-        lastDashTime = Time.time;
-        
+         lastDashTime = Time.time;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0f); // Dash in facing direction
     
         SFXManager.Instance.PlayDashSound();
         yield return new WaitForSeconds(dashDuration);
-        
         rb.gravityScale = originalGravity;
         isDashing = false;
-        animator.SetBool("isDashing", false);
         
-        yield return new WaitForSeconds(0.5f); // Play recovery sound
+        animator.SetBool("isDashing", false);
+        yield return new WaitForSeconds(0.5f); //Play the sound earlier
         SFXManager.Instance.PlayDashRecoverSound();
         yield return new WaitForSeconds(0.6f); // Dash cooldown
         canDash = true;
     }
-
     public float GetDashCooldownRemaining()
     {
-        float fullDashCooldown = dashDuration + 0.5f + 0.6f; // Total dash recovery time
+        float fullDashCooldown = dashDuration + 0.5f + 0.6f; // total dash recovery time
         return canDash ? 0f : Mathf.Max(0, (lastDashTime + fullDashCooldown) - Time.time);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Water"))
-        {
-            ConveyorBelt conveyor = collision.collider.GetComponent<ConveyorBelt>();
-            if (conveyor != null)
-            {
-                isOnConveyor = true;
-                conveyorBeltSpeed = (conveyor.rotation == ConveyorBelt.Rotation.Right) ? conveyor.speed 
-                                  : (conveyor.rotation == ConveyorBelt.Rotation.Left) ? -conveyor.speed 
-                                  : 0f;
-            }
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Water"))
-        {
-            isOnConveyor = false;
-            conveyorBeltSpeed = 0f;
-        }
     }
 }
