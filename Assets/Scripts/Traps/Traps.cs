@@ -8,7 +8,7 @@ public class Traps : MonoBehaviour
     {
         if (isActive && GameManager.instance.isTakenTreasure && collision.gameObject.CompareTag("Player"))
         {
-            //die an respawn
+            collision.gameObject.GetComponent<PlayerRespawn>().Respawn();
         }
     }
 
