@@ -17,4 +17,5 @@ public class Traps : MonoBehaviour
     {
         Debug.Log("Damage:" + damage); 
     }
+
 }
