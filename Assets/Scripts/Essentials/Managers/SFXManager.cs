@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class SFXManager : MonoBehaviour
+public class SFXManager : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
 {
     public static SFXManager Instance;
     [Header("Audio Sources")]    
@@ -19,7 +20,7 @@ public class SFXManager : MonoBehaviour
     [SerializeField] private AudioClip dashClip;
     [SerializeField] private AudioClip dashRecoverClip;
 
-    [Header("UI Sounds (Unused)")]
+    [Header("UI Sounds")]
     [SerializeField] private AudioClip uiPressClip;
     [SerializeField] private AudioClip uiHoverClip;
 
@@ -62,19 +63,18 @@ public class SFXManager : MonoBehaviour
     }
 
     private IEnumerator FootstepLoop()
-{
-    while (isPlayingFootsteps)
     {
-        PlayRandomFootstep();
-        while (footstepSource.isPlaying)
+        while (isPlayingFootsteps)
         {
-            yield return null;
+            PlayRandomFootstep();
+            while (footstepSource.isPlaying)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
         }
-
-        yield return new WaitForSeconds(Random.Range(0.3f, 0.5f));
     }
-}
-
 
     public void PlayJumpSound()
     {
@@ -130,24 +130,34 @@ public class SFXManager : MonoBehaviour
     }
     public void PlayWoodHitSound()
     {
-        if (sfxSource != null && jumpClip != null)
+        if (sfxSource != null && HittingWood != null)
         {
             sfxSource.PlayOneShot(HittingWood);
         }
     }
     public void PlayAirHitSound()
     {
-        if (sfxSource != null && jumpClip != null)
+        if (sfxSource != null && HittingAir != null)
         {
             sfxSource.PlayOneShot(HittingAir);
         }
     }
     public void PlayTreeFallSound()
     {
-        if (sfxSource != null && jumpClip != null)
+        if (sfxSource != null && TreeFall != null)
         {
             sfxSource.PlayOneShot(TreeFall);
         }
     }
-    
+
+    // UI Sound Implementation
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        PlayUIHoverSound();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        PlayUIPressSound();
+    }
 }

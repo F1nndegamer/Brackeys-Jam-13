@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerRespawn : MonoBehaviour
+public class PlayerRespawn : MonoBehaviour, KeyFunction
 {
     private Vector2 startPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -10,6 +10,10 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     // Update is called once per frame
+    public void CalledFromTressure()
+    {
+        startPos = transform.position;
+    }
     public void Respawn()
     {
         if (GameManager.instance.GetCheckpoint() != Vector3.zero)

@@ -20,6 +20,7 @@ public class Treasure : MonoBehaviour
         if(isTaken) return;
         if (PlayerScript.instance.inventory.AddItem(gameObject, uniqueCode, true))
         {
+            GameManager.instance.SetCheckpoint(collision.transform.position);
             FadeController.instance.Cycle(4);
             GameManager.instance.StartWait();
         }
