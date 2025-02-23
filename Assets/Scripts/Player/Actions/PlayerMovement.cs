@@ -141,7 +141,12 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("jump 2");
         }
     }
-
+    private void OTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.name);
+        
+        
+    }
     IEnumerator Dash()
     {
         animator.SetBool("isDashing", true);

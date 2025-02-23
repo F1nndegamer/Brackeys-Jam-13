@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TempRespawn : MonoBehaviour
@@ -14,6 +15,12 @@ public class TempRespawn : MonoBehaviour
     }
     public void LoadLevel()
     {
+        StartCoroutine(Loading());
+    }
+    private IEnumerator Loading()
+    {
+        FadeController.instance.FadeIn();
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneName);
     }
 }

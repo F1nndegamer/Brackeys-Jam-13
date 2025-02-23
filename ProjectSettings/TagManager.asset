@@ -7,6 +7,7 @@ TagManager:
   - Door
   - Key
   - Tree
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Items
     uniqueID: 2098176789
+    locked: 0
+  - name: UI
+    uniqueID: 1847688829
     locked: 0
   m_RenderingLayers:
   - Default

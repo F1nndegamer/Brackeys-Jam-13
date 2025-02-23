@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 public class Treasure : MonoBehaviour
 {
     
@@ -8,19 +9,19 @@ public class Treasure : MonoBehaviour
     private bool isTaken;
     private static HashSet<int> usedCodes = new HashSet<int>();
     [SerializeField] private int uniqueCode;
+    public static Treasure instance;
+    void Start()
+    {
+        instance = this;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player")) return;
         if(isTaken) return;
         if (PlayerScript.instance.inventory.AddItem(gameObject, uniqueCode, true))
         {
-            GameManager.instance.isTakenTreasure = true;
-            gameObject.SetActive(false);
-
-            foreach (var callable in FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<KeyFunction>())
-            {
-                callable.CalledFromTressure();
-            }
+            FadeController.instance.Cycle(4);
+            GameManager.instance.StartWait();
         }
         else
         {
