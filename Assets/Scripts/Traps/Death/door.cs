@@ -13,7 +13,20 @@ public class Door : MonoBehaviour, KeyFunction
         colliders = GetComponents<BoxCollider2D>();
         spriteRenderer = GetComponentsInChildren<SpriteRenderer>();
 
-        ToggleComponentsState();
+        if (colliders.Length >= 2 && removeStart)
+        {
+            bool newState = false;
+
+            foreach (BoxCollider2D collider in colliders)
+            {
+                collider.enabled = newState;
+            }
+
+            foreach (SpriteRenderer renderer in spriteRenderer)
+            {
+                renderer.enabled = newState;
+            }
+        }
     }
 
     public void CalledFromTressure()
@@ -43,7 +56,7 @@ public class Door : MonoBehaviour, KeyFunction
     {
         if (colliders.Length >= 2 && removeStart)
         {
-            bool newState = !colliders[0].enabled;
+            bool newState = true;
 
             foreach (BoxCollider2D collider in colliders)
             {
