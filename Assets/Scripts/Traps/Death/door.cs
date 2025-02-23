@@ -5,7 +5,7 @@ public class Door : MonoBehaviour, KeyFunction
 {
     private BoxCollider2D[] colliders;
     private SpriteRenderer[] spriteRenderer;
-
+    public bool removeStart = true;
     public int doorID; // Changed 'doornum' to 'doorID' for clarity
 
     private void Start()
@@ -41,7 +41,7 @@ public class Door : MonoBehaviour, KeyFunction
 
     public void ToggleComponentsState()
     {
-        if (colliders.Length >= 2)
+        if (colliders.Length >= 2 && removeStart)
         {
             bool newState = !colliders[0].enabled;
 
@@ -54,10 +54,6 @@ public class Door : MonoBehaviour, KeyFunction
             {
                 renderer.enabled = newState;
             }
-        }
-        else
-        {
-            Debug.LogWarning("Not enough BoxCollider2D components found on this GameObject!");
         }
     }
 }
