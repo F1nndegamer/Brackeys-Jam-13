@@ -1,26 +1,42 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class TempRespawn : MonoBehaviour
 {
     public static TempRespawn instance;
-    public string SceneName;
-    void Start()
+    public string sceneName; // Conventie: variabelen beginnen met kleine letter
+
+    private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
-    public void respawm()
+
+    public void Respawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        LoadLevel(SceneManager.GetActiveScene().name);
     }
-    public void LoadLevel()
+
+    public void LoadLevel(string sceneName)
     {
-        StartCoroutine(Loading());
+        StartCoroutine(Loading(sceneName));
     }
-    private IEnumerator Loading()
+
+    private IEnumerator Loading(string sceneName)
     {
-        FadeController.instance.FadeIn();
-        yield return new WaitForSeconds(1);
-        SceneManager.LoadScene(SceneName);
+        if (FadeController.instance != null)
+        {
+            FadeController.instance.FadeIn();
+            yield return new WaitForSeconds(1);
+        }
+        SceneManager.LoadScene(sceneName);
     }
 }
