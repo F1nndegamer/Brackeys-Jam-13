@@ -49086,7 +49086,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 5075c0fd669d63142a1ba6e4117b4f8a, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -49488,6 +49488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ae0807b61656e4b993b9e9d14276fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TpPos: {fileID: 0}
   uniqueCode: 0
 --- !u!212 &1382368500
 SpriteRenderer:
@@ -50773,6 +50774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a4c1cd1e3649e4e9ad072c30a37be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: 
 --- !u!1 &1644557743
 GameObject:
   m_ObjectHideFlags: 0
@@ -51563,6 +51565,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  treeLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!212 &2092502989
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -51726,10 +51731,14 @@ MonoBehaviour:
     item: {fileID: 0}
     isLocked: 0
     itemCode: 0
+    itemWasTaken: {x: 0, y: 0}
+    FollowLocation: {fileID: 0}
   - icon: {fileID: 1605801111}
     item: {fileID: 0}
     isLocked: 0
     itemCode: 0
+    itemWasTaken: {x: 0, y: 0}
+    FollowLocation: {fileID: 0}
   emptySprite: {fileID: -6007857137893288414, guid: b5d47f9b646eec4408260855fdf7a04d, type: 3}
   playerFollowPoint: {fileID: 1358507147}
 --- !u!212 &16130424342783965
@@ -51976,6 +51985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dbbb855ae75154ba9821ae93c7d4a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  removeStart: 1
   doorID: 0
 --- !u!61 &4983893087120382368
 BoxCollider2D:
@@ -52156,6 +52166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b6235b61c7a41645a4210cc17f8e0a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TpPos: {fileID: 0}
   keyID: 0
   uniqueCode: 0
 --- !u!114 &9056155942936324045
